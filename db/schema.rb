@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_20_052320) do
+ActiveRecord::Schema.define(version: 2022_07_27_003120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2019_12_20_052320) do
     t.integer "season_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+  end
+
+  create_table "contestant_outtings", force: :cascade do |t|
+    t.bigint "contestant_id"
+    t.bigint "outting_id"
+    t.index ["contestant_id"], name: "index_contestant_outtings_on_contestant_id"
+    t.index ["outting_id"], name: "index_contestant_outtings_on_outting_id"
   end
 
   create_table "contestants", force: :cascade do |t|
@@ -32,5 +40,14 @@ ActiveRecord::Schema.define(version: 2019_12_20_052320) do
     t.index ["bachelorette_id"], name: "index_contestants_on_bachelorette_id"
   end
 
+  create_table "outtings", force: :cascade do |t|
+    t.string "location"
+    t.string "theme"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "contestant_outtings", "contestants"
+  add_foreign_key "contestant_outtings", "outtings"
   add_foreign_key "contestants", "bachelorettes"
 end

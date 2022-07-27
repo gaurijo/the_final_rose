@@ -1,0 +1,13 @@
+<h1>Contestants Index</h1>
+These Contestants are from: <% @contestants.each do |contestant|%>
+   <%= contestant.hometown %>
+<% end %>
+
+<% @contestants.each do |contestant| %>
+   <div id="contestants-<%= contestant.id %>" >
+      <p><%= link_to "#{contestant.name}", "/contestants/#{contestant.id}" %> </p>
+      <p>Name: <%= contestant.name %>
+      <p>Age: <%= contestant.age %> </p>
+      <p>Hometown: <%= contestant.hometown %> </p>
+   </div>
+   <%end %>

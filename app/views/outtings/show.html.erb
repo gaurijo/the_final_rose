@@ -1,0 +1,9 @@
+<h1>Outtings Show</h1>
+
+<p>Location: <%= @outting.location %></p>
+<p>Theme: <%= @outting.theme %></p>
+
+<p>Total contestants: <%= @outting.total_contestants %> </p>
+<p>Contestants: <% @outting.contestants.each do |contestant| %></p>
+   <%= contestant.name %>
+<% end %>

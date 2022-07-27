@@ -1,0 +1,10 @@
+<h1>Contestant Show page</h1>
+
+<% bachelorette = Bachelorette.create!(name: "JoJo", season_number: 13, description: "You ain't seen nothing yet!") %>
+
+<h3>Name: <%= @contestant.name %></h3>
+<h4>Season: <%= @contestant.bachelorette.season_number %></h4>
+<p>Description: <%= @contestant.bachelorette.description %></p>
+<p><b>Outtings:</b> <% @contestant.outtings.each do |outting| %></p>
+   <p><%= link_to "#{outting.location}", "/outtings/#{outting.id}" %></p>
+   <% end %><p>
